@@ -58,53 +58,57 @@ adatrack/
 |
 |---.gitignore
 
+## 🧠 Fonctionnement de l’application
+
+### 1️⃣ Chargement des données
+- Au chargement de la page, le front appelle l’API `GET /portfolio`
+- Le backend récupère les thèmes et leurs compétences
+- Le front génère dynamiquement l’affichage avec JavaScript
+
+---
+
+### 2️⃣ Ajout d’une compétence
+- L’utilisateur remplit le formulaire (thème, compétence, niveau)
+- Une requête `POST /skills` est envoyée au serveur
+- Le backend crée le thème s’il n’existe pas
+- La compétence est ajoutée en base de données
+- L’interface est mise à jour automatiquement
+
+---
+
+### 3️⃣ Suppression d’une compétence
+- Clic sur le bouton ❌
+- Appel `DELETE /skills/:id`
+- La compétence est supprimée en base
+- Le portfolio est rechargé
+
+---
+
+### 4️⃣ Suppression d’un thème
+- Clic sur “Supprimer le thème”
+- Appel `DELETE /themes/:id`
+- Toutes les compétences liées sont supprimées automatiquement
+- L’affichage est mis à jour
+
+---
+
+## 🧩 Concepts techniques mis en pratique
+
+- API REST
+- Architecture front / back
+- Base de données relationnelle
+- Clés étrangères et suppression en cascade
+- Manipulation dynamique du DOM
+- Gestion des événements
+- Boucles `forEach`
+- Persistance des données
+
+---
+
 ## ⚙️ Installation et lancement
 
-### 1️⃣ Back-end
+### Back-end
 ```bash
 cd back
 npm install
 npm run dev
-Le serveur démarre sur :
-
-http://localhost:4242
-
-
-
- 2️⃣ Front-end
-
-Ouvrir front/index.html
-
-ou utiliser Live Server (VS Code)
-
-🧠 Fonctionnement
-
-Le front récupère les données via l’API (GET /portfolio)
-
-Les thèmes et compétences sont générés dynamiquement
-
-Les ajouts et suppressions sont immédiatement synchronisés avec la base de données
-
-🎓 Objectif pédagogique
-
-Ce projet a été réalisé dans un cadre pédagogique afin de mettre en pratique :
-
-la communication front / back
-
-l’utilisation d’une base de données relationnelle
-
-la création d’une API REST
-
-la manipulation dynamique du DOM
-
-les bonnes pratiques JavaScript
-
-🔮 Améliorations possibles
-
-Modifier une compétence
-
-Ajouter un emoji par thème
-
-Authentification utilisateur
-
-Déploiement en ligne
