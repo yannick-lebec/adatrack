@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Portfolio Sport - Yannick</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <header class="user">
+      <h1>Mon Portfolio Sport</h1>
+    </header>
+
+    <main>
+      <!-- Tout est injecté ici depuis la DB -->
+      <div id="portfolio"></div>
+
+      <section class="form-section">
+        <h2>Ajouter une compétence</h2>
+
+        <form id="skillForm">
+          <input
+            type="text"
+            id="themeName"
+            placeholder="Thème (ex: velo, course, musculation)"
+            required
+          />
+
+          <input
+            type="text"
+            id="skillName"
+            placeholder="Nom de la compétence"
+            required
+          />
+
+          <input
+            type="number"
+            id="skillValue"
+            placeholder="Pourcentage"
+            min="0"
+            max="100"
+            required
+          />
+
+          <button type="submit">Ajouter</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 - Portfolio Sport</p>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

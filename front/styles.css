@@ -1,0 +1,140 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.user {
+  background: #111;
+  color: white;
+  padding: 40px;
+  text-align: center;
+}
+
+.sport {
+  padding: 60px 20px;
+  text-align: center;
+  color: rgb(127, 56, 56);
+}
+
+.sport h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+  
+}
+
+.skills {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.skills li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.progress-circle {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: conic-gradient(
+    #4caf50 calc(var(--value) * 1%),
+    rgba(255, 255, 255, 0.3) 0
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.progress-circle::before {
+  content: "";
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  position: absolute;
+}
+
+.progress-circle span {
+  position: relative;
+  font-weight: bold;
+  font-size: 18px;
+  color: white;
+}
+
+.skills p {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.form-section {
+  background: #fff;
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.form-section h2 {
+  margin-bottom: 20px;
+}
+
+#skillForm {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#skillForm input {
+  padding: 10px;
+  font-size: 16px;
+}
+
+#skillForm button {
+  padding: 10px 20px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#skillForm button:hover {
+  background: #43a047;
+}
+
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+@media (max-width: 600px) {
+  .skills {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  #skillForm {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #skillForm input,
+  #skillForm button {
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+}
