@@ -19,31 +19,40 @@
         <h2>Ajouter une compétence</h2>
 
         <form id="skillForm">
-          <input
-            type="text"
-            id="themeName"
-            placeholder="Thème (ex: velo, course, musculation)"
-            required
-          />
+  <div class="form-group">
+    <label for="themeName">Thème</label>
+    <input
+      type="text"
+      id="themeName"
+      placeholder="ex: vélo, course, musculation"
+      required
+    />
+  </div>
 
-          <input
-            type="text"
-            id="skillName"
-            placeholder="Nom de la compétence"
-            required
-          />
+  <div class="form-group">
+    <label for="skillName">Compétence</label>
+    <input
+      type="text"
+      id="skillName"
+      placeholder="ex: Endurance"
+      required
+    />
+  </div>
 
-          <input
-            type="number"
-            id="skillValue"
-            placeholder="Pourcentage"
-            min="0"
-            max="100"
-            required
-          />
+  <div class="form-group">
+    <label for="skillValue">Niveau (%)</label>
+    <input
+      type="number"
+      id="skillValue"
+      min="0"
+      max="100"
+      placeholder="0 à 100"
+      required
+    />
+  </div>
 
-          <button type="submit">Ajouter</button>
-        </form>
+  <button type="submit">Ajouter</button>
+</form>
       </section>
     </main>
 

@@ -10,30 +10,36 @@ function renderPortfolio(portfolio) {
     return;
   }
 
-  for (const theme of portfolio) {
+  
+  portfolio.forEach((theme) => {
     const section = document.createElement("section");
     section.className = "sport";
 
     section.innerHTML = `
-      <h2>🏅 ${theme.name}</h2>
+      <div class="theme-header">
+        <h2>🏅 ${theme.name}</h2>
+        <button class="delete-theme" data-theme-id="${theme.id}">Supprimer le thème</button>
+      </div>
       <ul class="skills"></ul>
     `;
 
     const ul = section.querySelector(".skills");
 
-    for (const s of theme.skills) {
+    
+    (theme.skills || []).forEach((s) => {
       const li = document.createElement("li");
       li.innerHTML = `
         <div class="progress-circle" style="--value: ${s.value}">
           <span>${s.value}%</span>
         </div>
         <p>${s.name}</p>
+        <button class="delete-skill" data-id="${s.id}">✖</button>
       `;
       ul.appendChild(li);
-    }
+    });
 
     portfolioEl.appendChild(section);
-  }
+  });
 }
 
 async function loadPortfolio() {
@@ -52,10 +58,58 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 });
 
+// Un seul listener pour gérer les deux suppressions
+portfolioEl.addEventListener("click", async (e) => {
+  // supprimer un thème
+  if (e.target.classList.contains("delete-theme")) {
+    const themeId = e.target.dataset.themeId;
+    if (!confirm("Supprimer ce thème et toutes ses compétences ?")) return;
+
+    try {
+      const res = await fetch(`${API_URL}/themes/${themeId}`, {
+        method: "DELETE",
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || "Erreur suppression thème");
+      }
+
+      await loadPortfolio();
+    } catch (err) {
+      console.error(err);
+      alert("Impossible de supprimer le thème.");
+    }
+    return;
+  }
+
+  // supprimer une skill
+  if (e.target.classList.contains("delete-skill")) {
+    const id = e.target.dataset.id;
+    if (!confirm("Supprimer cette compétence ?")) return;
+
+    try {
+      const res = await fetch(`${API_URL}/skills/${id}`, { method: "DELETE" });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.error || "Erreur suppression skill");
+      }
+
+      await loadPortfolio();
+    } catch (err) {
+      console.error(err);
+      alert("Impossible de supprimer la compétence.");
+    }
+    return;
+  }
+});
+
+// Ajout d'une skill (thème + skill + value)
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const theme = document.getElementById("themeName").value.trim().toLowerCase();
+  const theme = document.getElementById("themeName").value.trim();
   const name = document.getElementById("skillName").value.trim();
   const value = Number(document.getElementById("skillValue").value);
 

@@ -112,6 +112,54 @@ body {
   background: #43a047;
 }
 
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.delete-skill {
+  margin-top: 8px;
+  background: transparent;
+  border: none;
+  color: #b00020;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.delete-skill:hover {
+  color: #ff1744;
+}
+
+.theme-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.delete-theme {
+  padding: 8px 12px;
+  background: transparent;
+  border: 2px solid #b00020;
+  color: #b00020;
+  cursor: pointer;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.delete-theme:hover {
+  background: #b00020;
+  color: white;
+}
+
 footer {
   background: #111;
   color: white;

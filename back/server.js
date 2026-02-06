@@ -35,7 +35,9 @@ app.get("/portfolio", async (req, res) => {
     const skillsByTheme = new Map();
     for (const s of skills) {
       if (!skillsByTheme.has(s.theme_id)) skillsByTheme.set(s.theme_id, []);
-      skillsByTheme.get(s.theme_id).push({ id: s.id, name: s.name, value: s.value });
+      skillsByTheme
+        .get(s.theme_id)
+        .push({ id: s.id, name: s.name, value: s.value });
     }
 
     const portfolio = themes.map((t) => ({
@@ -73,7 +75,8 @@ app.post("/skills", async (req, res) => {
 
   try {
     // trouver ou créer le thème
-    let t = await sql`SELECT id FROM themes WHERE name = ${cleanedTheme} LIMIT 1`;
+    let t =
+      await sql`SELECT id FROM themes WHERE name = ${cleanedTheme} LIMIT 1`;
     if (t.length === 0) {
       t = await sql`
         INSERT INTO themes (name)
@@ -90,6 +93,46 @@ app.post("/skills", async (req, res) => {
     `;
 
     res.status(201).json({ inserted: inserted[0], theme: cleanedTheme });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Database error" });
+  }
+});
+
+app.delete("/themes/:id", async (req, res) => {
+  const id = Number(req.params.id);
+  if (Number.isNaN(id)) {
+    return res.status(400).json({ error: "Invalid theme id" });
+  }
+
+  try {
+    const deleted = await sql`
+      DELETE FROM themes
+      WHERE id = ${id}
+      RETURNING id;
+    `;
+
+    if (deleted.length === 0) {
+      return res.status(404).json({ error: "Theme not found" });
+    }
+
+    // Les skills liées sont supprimées automatiquement (ON DELETE CASCADE)
+    res.json({ deleted: true, id });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Database error" });
+  }
+});
+
+app.delete("/skills/:id", async (req, res) => {
+  const id = Number(req.params.id);
+  if (Number.isNaN(id)) {
+    return res.status(400).json({ error: "Invalid id" });
+  }
+
+  try {
+    await sql`DELETE FROM skills WHERE id = ${id}`;
+    res.json({ deleted: true });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Database error" });
