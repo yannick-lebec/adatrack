@@ -43,21 +43,20 @@ Application web permettant de créer un **portfolio sportif dynamique** avec des
 ## 📂 Structure du projet
 
 adatrack/
-│
-├── back/
-│ ├── server.js
-│ ├── package.json
-│ └── .env
-│
-├── front/
-│ ├── index.html
-│ ├── styles.css
-│ └── app.js
-│
-├── db/
-│ └── schema.sql
-│
-└── README.md
+|
+|--- back/
+| |-- server.js
+| |-- package.json
+| |-- .env
+|
+|--- front/
+| |-- index.html
+| |-- styles.css
+| |-- app.js
+| 
+|--- README.md
+|
+|---.gitignore
 
 ## ⚙️ Installation et lancement
 
@@ -72,7 +71,7 @@ http://localhost:4242
 
 
 
-2️⃣ Front-end
+ 2️⃣ Front-end
 
 Ouvrir front/index.html
 
