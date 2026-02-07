@@ -61,7 +61,7 @@ app.post("/skills", async (req, res) => {
     return res.status(400).json({ error: "theme, name, value are required" });
   }
 
-  const cleanedTheme = String(theme).trim().toLowerCase();
+  const cleanedTheme = String(theme).trim();
   const cleanedName = String(name).trim();
   const intValue = Number(value);
 

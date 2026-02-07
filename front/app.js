@@ -2,6 +2,12 @@ const API_URL = "http://localhost:4242";
 const portfolioEl = document.getElementById("portfolio");
 const form = document.getElementById("skillForm");
 
+function getColorByValue(value) {
+  if (value <= 40) return "#e53935";
+  if (value <= 70) return "#fb8c00";
+  return "#43a047";                     
+}
+
 function renderPortfolio(portfolio) {
   portfolioEl.innerHTML = "";
 
@@ -18,7 +24,7 @@ function renderPortfolio(portfolio) {
     section.innerHTML = `
       <div class="theme-header">
         <h2>🏅 ${theme.name}</h2>
-        <button class="delete-theme" data-theme-id="${theme.id}">Supprimer le thème</button>
+        <button class="delete-theme" data-theme-id="${theme.id}">Supprimer le sport</button>
       </div>
       <ul class="skills"></ul>
     `;
@@ -29,7 +35,7 @@ function renderPortfolio(portfolio) {
     (theme.skills || []).forEach((s) => {
       const li = document.createElement("li");
       li.innerHTML = `
-        <div class="progress-circle" style="--value: ${s.value}">
+        <div class="progress-circle" style="--value: ${s.value}; --color: ${getColorByValue(s.value)}">
           <span>${s.value}%</span>
         </div>
         <p>${s.name}</p>
