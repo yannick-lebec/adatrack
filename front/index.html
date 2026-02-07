@@ -11,49 +11,75 @@
       <h1>Mon Portfolio Sport</h1>
     </header>
 
-    <main>
-      <!-- Tout est injecté ici depuis la DB -->
-      <div id="portfolio"></div>
+    <!-- Layout 3 colonnes : pub gauche / contenu / pub droite -->
+    <main class="layout">
+      <!-- PUB GAUCHE -->
+      <aside class="ad ad-left">
+        <div class="ad-box">
+          <img src="../images/pub1.jpg" alt="">
+        </div>
+        <div class="ad-box">
+          <img src="../images/494.jpg" alt="">
 
-      <section class="form-section">
-        <h2>Ajouter une compétence</h2>
+        </div>
+      </aside>
 
-        <form id="skillForm">
-  <div class="form-group">
-    <label for="themeName">Thème</label>
-    <input
-      type="text"
-      id="themeName"
-      placeholder="ex: vélo, course, musculation"
-      required
-    />
-  </div>
+      <!-- CONTENU PRINCIPAL -->
+      <section class="content">
+        <!-- Tout est injecté ici depuis la DB -->
+        <div id="portfolio"></div>
 
-  <div class="form-group">
-    <label for="skillName">Compétence</label>
-    <input
-      type="text"
-      id="skillName"
-      placeholder="ex: Endurance"
-      required
-    />
-  </div>
+        <section class="form-section">
+          <h2>Ajouter une compétence</h2>
 
-  <div class="form-group">
-    <label for="skillValue">Niveau (%)</label>
-    <input
-      type="number"
-      id="skillValue"
-      min="0"
-      max="100"
-      placeholder="0 à 100"
-      required
-    />
-  </div>
+          <form id="skillForm">
+            <div class="form-group">
+              <label for="themeName">Thème</label>
+              <input
+                type="text"
+                id="themeName"
+                placeholder="ex: vélo, course, musculation"
+                required
+              />
+            </div>
 
-  <button type="submit">Ajouter</button>
-</form>
+            <div class="form-group">
+              <label for="skillName">Compétence</label>
+              <input
+                type="text"
+                id="skillName"
+                placeholder="ex: Endurance"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="skillValue">Niveau (%)</label>
+              <input
+                type="number"
+                id="skillValue"
+                min="0"
+                max="100"
+                placeholder="0 à 100"
+                required
+              />
+            </div>
+
+            <button type="submit">Ajouter</button>
+          </form>
+        </section>
       </section>
+
+      <!-- PUB DROITE -->
+      <aside class="ad ad-right">
+        <div class="ad-box">
+          <img src="../images/71.webp" alt="">
+        </div>
+
+        <div class="ad-box">
+          <img src="../images/campagne-sport-1-scaled.jpg" alt="">
+        </div>
+      </aside>
     </main>
 
     <footer>

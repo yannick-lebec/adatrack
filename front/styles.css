@@ -10,6 +10,40 @@ body {
   color: #333;
 }
 
+.layout {
+  display: grid;
+  grid-template-columns: 500px 1fr 500px;
+  gap: 20px;
+  padding: 20px;
+  align-items: start;
+}
+
+.content {
+  min-width: 0;
+}
+
+.ad {
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.ad-box {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+}
+
+.ad-box img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+}
+
+
 .user {
   background:url('../images/sporttoday.jpg');
   background-size: cover;
@@ -36,7 +70,7 @@ body {
 }
 
 .sport h2 {
-  font-size: 32px;
+  font-size: 40px;
   margin-bottom: 40px;
   
 }
@@ -196,5 +230,16 @@ footer {
     width: 100%;
     max-width: 360px;
     margin: 0 auto;
+  }
+}
+
+/* Mobile : on cache les pubs */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .ad {
+    display: none;
   }
 }
