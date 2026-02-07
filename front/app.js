@@ -22,11 +22,13 @@ function renderPortfolio(portfolio) {
     section.className = "sport";
 
     section.innerHTML = `
+    <div class= "container">
       <div class="theme-header">
         <h2>🏅 ${theme.name}</h2>
         <button class="delete-theme" data-theme-id="${theme.id}">Supprimer le sport</button>
       </div>
       <ul class="skills"></ul>
+      </div>
     `;
 
     const ul = section.querySelector(".skills");

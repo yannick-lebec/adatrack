@@ -10,6 +10,12 @@ body {
   color: #333;
 }
 
+.container {
+  border: 3px solid rgb(127, 56, 56);
+  border-radius: 12px;
+  background-color: #f8f8fa;
+}
+
 .layout {
   display: grid;
   grid-template-columns: 500px 1fr 500px;
