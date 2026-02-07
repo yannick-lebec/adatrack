@@ -45,7 +45,7 @@ body {
 
 
 .user {
-  background:url('../images/sporttoday.jpg');
+  background:url('./images/sporttoday.jpg');
   background-size: cover;
   animation: moveBackground 30s linear infinite;
   color: rgb(7, 7, 7);
@@ -234,7 +234,7 @@ footer {
 }
 
 /* Mobile : on cache les pubs */
-@media (max-width: 900px) {
+@media (max-width: 1400px) {
   .layout {
     grid-template-columns: 1fr;
   }
