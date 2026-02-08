@@ -53,7 +53,8 @@ adatrack/
 | |-- index.html
 | |-- styles.css
 | |-- app.js
-| 
+| |--- images/
+|
 |--- README.md
 |
 |---.gitignore
